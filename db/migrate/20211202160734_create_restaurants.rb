@@ -6,7 +6,6 @@ class CreateRestaurants < ActiveRecord::Migration[6.1]
       t.string :image
       t.integer :reservation_spots
       t.integer :price_range
-      t.string :category
 
       t.timestamps
     end
