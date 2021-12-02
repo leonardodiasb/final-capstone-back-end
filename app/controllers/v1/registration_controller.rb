@@ -1,6 +1,6 @@
 class V1::RegistrationController < ApplicationController
   skip_before_action :authenticate_request
- 
+
   def create
     @user = User.new
     @user.first_name = params[:first_name]
@@ -10,5 +10,4 @@ class V1::RegistrationController < ApplicationController
     @user.password_confirmation = params[:password_confirmation]
     render json: 'OK' if @user.save!
   end
- end
- 
+end
