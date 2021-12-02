@@ -1,4 +1,4 @@
-class V1::AuthenticationController < ApplicationController
+class V1::RegistrationController < ApplicationController
   skip_before_action :authenticate_request
  
   def create
@@ -8,7 +8,7 @@ class V1::AuthenticationController < ApplicationController
     @user.email = params[:email]
     @user.password = params[:password]
     @user.password_confirmation = params[:password_confirmation]
-    @user.save!
+    render json: 'OK' if @user.save!
   end
  end
  
