@@ -46,6 +46,7 @@ group :test do
   gem 'factory_bot_rails', '~> 4.0'
   gem 'faker'
   gem 'webdrivers'
+  gem 'shoulda-matchers', '~> 3.1'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
