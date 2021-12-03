@@ -12,7 +12,6 @@ class JsonWebToken
       HashWithIndifferentAccess.new body
       p 'so far so gooooodd!!!'
     rescue StandardError
-      p 'Error!!!'
       nil
     end
   end
