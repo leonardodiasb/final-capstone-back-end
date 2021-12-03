@@ -9,6 +9,8 @@ gem 'rubocop', '>= 1.0', '< 2.0'
 gem 'jwt'
 # Simple_command
 gem 'simple_command'
+# Rack cors
+gem 'rack-cors'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
