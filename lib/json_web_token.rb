@@ -10,7 +10,9 @@ class JsonWebToken
     def decode(token)
       body = JWT.encode(token, SECRET_KEY).first
       HashWithIndifferentAccess.new body
+      p 'so far so gooooodd!!!'
     rescue StandardError
+      p 'Error!!!'
       nil
     end
   end
