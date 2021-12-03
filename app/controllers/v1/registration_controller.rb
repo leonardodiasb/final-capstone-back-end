@@ -1,5 +1,5 @@
 class V1::RegistrationController < ApplicationController
-  skip_before_action :authenticate_request
+  skip_before_action :authenticate_request, only: [:create]
 
   def create
     @user = User.new
