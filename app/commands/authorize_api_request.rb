@@ -22,6 +22,7 @@ class AuthorizeApiRequest
   def decoded_auth_token
     p @decoded_auth_token ||= JsonWebToken.decode(http_auth_header)
     p 'decoded'
+    p decoded_auth_token[:user_id]
   end
 
   def http_auth_header
