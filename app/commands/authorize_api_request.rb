@@ -14,13 +14,14 @@ class AuthorizeApiRequest
   attr_reader :headers
 
   def user
-    p decoded_auth_token[:user_id] if decoded_auth_token
-    @user ||= User.find(decoded_auth_token[:user_id]) if decoded_auth_token
+    p @user ||= User.find(decoded_auth_token[:user_id]) if decoded_auth_token
+    p 'found user'
     @user || (errors.add(:token, 'Invalid token') && nil)
   end
 
   def decoded_auth_token
-    @decoded_auth_token ||= JsonWebToken.decode(http_auth_header)
+    p @decoded_auth_token ||= JsonWebToken.decode(http_auth_header)
+    p 'decoded'
   end
 
   def http_auth_header
