@@ -8,6 +8,9 @@ class V1::RegistrationController < ApplicationController
     @user.email = params[:email]
     @user.password = params[:password]
     @user.password_confirmation = params[:password_confirmation]
-    render json: 'OK' if @user.save!
+    if @user.save!
+      command = AuthenticateUser.call(params[:email], params[:password])
+      render json: { auth_token: command.result }
+    end
   end
 end
