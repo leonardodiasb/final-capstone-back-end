@@ -24,6 +24,7 @@ class AuthorizeApiRequest
     p 'decoded'
     p @decoded_auth_token
     p @decoded_auth_token[:user_id]
+    @decoded_auth_token
   end
 
   def http_auth_header
