@@ -24,5 +24,6 @@ class JsonWebToken
           ENV["SECRET_KEY_BASE"] || credentials.secret_key_base || secrets.secret_key_base
         )
       end
+    end
   end
 end
