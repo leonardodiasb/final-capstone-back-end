@@ -10,4 +10,11 @@ class V1::CategoriesController < ApplicationController
 
     render json: { status: :created, data: @category }
   end
+
+  def destroy
+    @category = Category.find(params[:id])
+    return render json: @category.errors, status: :unprocessable_entity unless @category.destroy
+
+    render json: { status: :no_content, message: 'Category deleted successfully.', body: nil }, status: :ok
+  end
 end
