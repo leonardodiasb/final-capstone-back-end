@@ -6,5 +6,7 @@ Rails.application.routes.draw do
     post 'register', to: 'registration#create'
     get 'users', to: 'users#index'
     resources :restaurants
+    resources :shifts
+    resources :categories
   end
 end
