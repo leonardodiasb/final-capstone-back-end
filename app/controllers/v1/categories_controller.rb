@@ -8,7 +8,7 @@ class V1::CategoriesController < ApplicationController
     @category = Category.new(name: params[:name])
     return render json: @category.errors, status: :unprocessable_entity unless @category.save
 
-    render json: { status: :created, data: @category }
+    render json: { status: :created, message: 'Category created successfully.', body: @category }, status: :created
   end
 
   def destroy
