@@ -5,10 +5,10 @@ class Category < ApplicationRecord
 
   def self.json_list
     all.map do |cat|
-    {
-      id: cat.id,
-      name: cat.name
-    }
+      {
+        id: cat.id,
+        name: cat.name
+      }
+    end
   end
-end
 end

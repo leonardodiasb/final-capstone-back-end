@@ -4,7 +4,7 @@ class Shift < ApplicationRecord
   validates :name, presence: true
 
   def self.json_list
-      all.map do |shift|
+    all.map do |shift|
       {
         id: shift.id,
         name: shift.name

@@ -18,7 +18,9 @@ RSpec.describe 'api/restaurants', type: :request do
       }
 
       response '201', 'Restaurant created' do
-        let(:restaurant) { { name: 'foo', description: 'bar', reservation_spots: 10, image: 'http://test.test', price_range: 3 } }
+        let(:restaurant) do
+          { name: 'foo', description: 'bar', reservation_spots: 10, image: 'http://test.test', price_range: 3 }
+        end
         run_test!
       end
 
@@ -36,14 +38,14 @@ RSpec.describe 'api/restaurants', type: :request do
 
       response '200', 'Restaurants found' do
         schema type: :array,
-          properties: {
-            id: { type: :integer },
-            name: { type: :string },
-            description: { type: :string },
-            reservation_spots: { type: :integer },
-            image: { type: :string },
-            price_range: { type: :integer }
-          }
+               properties: {
+                 id: { type: :integer },
+                 name: { type: :string },
+                 description: { type: :string },
+                 reservation_spots: { type: :integer },
+                 image: { type: :string },
+                 price_range: { type: :integer }
+               }
         run_test!
       end
     end
