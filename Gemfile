@@ -11,6 +11,8 @@ gem 'jwt'
 gem 'simple_command'
 # Rack cors
 gem 'rack-cors'
+# RSwag
+gem 'rswag'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
