@@ -9,7 +9,7 @@ class V1::CategoriesController < ApplicationController
       @category = Category.new(name: params[:name])
       return render json: @category.errors, status: :unprocessable_entity unless @category.save
 
-      render json: { status: :created, message: 'Category created successfully.', body: @category }, status: :created
+      render json: { status: :created, message: 'Category created successfully.', body: @category }, status: :ok
     else
       render json: { error: 'Not Authorized' }, status: 401
     end
