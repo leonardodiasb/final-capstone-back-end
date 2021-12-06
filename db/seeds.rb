@@ -5,3 +5,45 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+restaurant1 = Restaurant.create(
+  name: 'Restaurant 1',
+  description: 'Japanese Restaurant',
+  image: 'http://test.test',
+  reservation_spots: 20,
+  price_range: 5
+)
+
+restaurant2 = Restaurant.create(
+  name: 'Restaurant 2',
+  description: 'Salad restaurant',
+  image: 'http://test.test',
+  reservation_spots: 10,
+  price_range: 2
+)
+
+restaurant3 = Restaurant.create(
+  name: 'Restaurant 3',
+  description: 'Burguer restaurant',
+  image: 'http://test.test',
+  reservation_spots: 15,
+  price_range: 3
+)
+
+japanese = Category.create(name: 'Japanese')
+burguer = Category.create(name: 'Burguer')
+salad = Category.create(name: 'Salad')
+
+breakfast = Shift.create(name: 'Breakfast')
+lunch = Shift.create(name: 'Lunch')
+dinner = Shift.create(name: 'Dinner')
+
+restaurant1.categories << japanese
+restaurant2.categories << salad
+restaurant3.categories << burguer
+
+restaurant1.shifts << dinner
+restaurant2.shifts << breakfast
+restaurant2.shifts << lunch
+restaurant3.shifts << lunch
+restaurant3.shifts << dinner
