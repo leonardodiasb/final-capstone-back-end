@@ -13,17 +13,18 @@ class ApplicationController < ActionController::API
     @page ||= params[:page] || 1
   end
 
-  def set_pagination_headers(pc)
-    headers["X-Total-Count"] = pc.total_count
+  def pagination_headers(pag)
+    headers['X-Total-Count'] = pag.total_count
 
     links = []
-    links << page_link(pc.prev_page, 'prev') if pc.prev_page
-    links << page_link(pc.next_page, 'next') if pc.next_page
-    
-    headers["Link"] = links.join(", ") if links.present?
+    links << page_link(pag.prev_page, 'prev') if pag.prev_page
+    links << page_link(pag.next_page, 'next') if pag.next_page
+
+    headers['Link'] = links.join(', ') if links.present?
   end
+
   def page_link(page, rel)
-    base_uri = request.url.split("?").first
-    "<#{base_uri}?#{(request.query_parameters.merge(page: page).to_param)}>; rel='#{rel}'"
+    base_uri = request.url.split('?').first
+    "<#{base_uri}?#{request.query_parameters.merge(page: page).to_param}>; rel='#{rel}'"
   end
 end

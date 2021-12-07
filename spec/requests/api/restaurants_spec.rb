@@ -24,8 +24,11 @@ RSpec.describe 'api/restaurants', type: :request do
         let(:shift) { create(:shift) }
         let(:category) { create(:category) }
         let(:user) { create(:user) }
-        let(:"Authorization") { "#{AuthenticateUser.call(user.email, user.password).result}" }
-        let(:restaurant) { { name: 'foo', description: 'bar', reservation_spots: 10, image: 'http://test.test', price_range: 3, shifts: [shift.id], categories: [category.id] } }
+        let(:Authorization) { AuthenticateUser.call(user.email, user.password).result.to_s }
+        let(:restaurant) do
+          { name: 'foo', description: 'bar', reservation_spots: 10, image: 'http://test.test', price_range: 3,
+            shifts: [shift.id], categories: [category.id] }
+        end
         run_test!
       end
 
@@ -33,7 +36,7 @@ RSpec.describe 'api/restaurants', type: :request do
         let(:shift) { create(:shift) }
         let(:category) { create(:category) }
         let(:user) { create(:user) }
-        let(:"Authorization") { "#{AuthenticateUser.call(user.email, user.password).result}" }
+        let(:Authorization) { AuthenticateUser.call(user.email, user.password).result.to_s }
         let(:restaurant) { { name: 'Foo', shifts: [shift.id], categories: [category.id] } }
         run_test!
       end
@@ -48,18 +51,18 @@ RSpec.describe 'api/restaurants', type: :request do
 
       response '200', 'Restaurants found' do
         let(:user) { create(:user) }
-        let(:"Authorization") { "#{AuthenticateUser.call(user.email, user.password).result}" }
+        let(:Authorization) { AuthenticateUser.call(user.email, user.password).result.to_s }
         schema type: :array,
-          properties: {
-            id: { type: :integer },
-            name: { type: :string },
-            description: { type: :string },
-            reservation_spots: { type: :integer },
-            image: { type: :string },
-            price_range: { type: :integer },
-            shifts: { type: :array },
-            categories: { type: :array }
-          }
+               properties: {
+                 id: { type: :integer },
+                 name: { type: :string },
+                 description: { type: :string },
+                 reservation_spots: { type: :integer },
+                 image: { type: :string },
+                 price_range: { type: :integer },
+                 shifts: { type: :array },
+                 categories: { type: :array }
+               }
         run_test!
       end
     end

@@ -1,14 +1,14 @@
-class V1::RestaurantsController < ApplicationController  
+class V1::RestaurantsController < ApplicationController
   def index
     @restaurants = Restaurant.page(page)
     @restaurants.json_list
-    set_pagination_headers(@restaurants)
+    pagination_headers(@restaurants)
     render json: @restaurants
   end
 
   def create
     @current_user = AuthorizeApiRequest.call(request.headers).result
-    if @current_user.role =='admin'
+    if @current_user.role == 'admin'
       @restaurant = Restaurant.new(restaurant_params)
 
       restaurant_shift_params.each do |shift|
@@ -21,24 +21,24 @@ class V1::RestaurantsController < ApplicationController
 
       if @restaurant.save
         render json: { status: 'SUCCESS', message: 'You created a restaurant!', data: @restaurant },
-              status: :created
+               status: :created
       else
         render json: { status: 'ERROR', message: 'Failed to create a restaurant', error: @restaurant.errors },
-              status: :bad_request
+               status: :bad_request
       end
     else
       render json: { status: 'ERROR', message: 'Only admins can create a restaurant' },
-            status: :unauthorized
+             status: :unauthorized
     end
   end
 
   def destroy
     @current_user = AuthorizeApiRequest.call(request.headers).result
-    if @current_user.role =='admin'
-      @restaurant = Restaurant.find(params[:id])
-      @restaurant.destroy
-      render json: { status: 'SUCCESS', message: 'Restaurant Deleted', data: @restaurant }, status: :ok
-    end
+    return unless @current_user.role == 'admin'
+
+    @restaurant = Restaurant.find(params[:id])
+    @restaurant.destroy
+    render json: { status: 'SUCCESS', message: 'Restaurant Deleted', data: @restaurant }, status: :ok
   end
 
   private
