@@ -6,10 +6,19 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+User.create(
+  first_name: 'admin',
+	last_name: 'admin',
+	email: 'admin1@user.com',
+	password: 'password',
+	password_confirmation: 'password',
+	role:'admin'
+)
+
 restaurant1 = Restaurant.create(
   name: 'Restaurant 1',
   description: 'Japanese Restaurant',
-  image: 'http://test.test',
+  image: 'https://picsum.photos/200',
   reservation_spots: 20,
   price_range: 5
 )
@@ -17,7 +26,7 @@ restaurant1 = Restaurant.create(
 restaurant2 = Restaurant.create(
   name: 'Restaurant 2',
   description: 'Salad restaurant',
-  image: 'http://test.test',
+  image: 'https://picsum.photos/200',
   reservation_spots: 10,
   price_range: 2
 )
@@ -25,7 +34,7 @@ restaurant2 = Restaurant.create(
 restaurant3 = Restaurant.create(
   name: 'Restaurant 3',
   description: 'Burguer restaurant',
-  image: 'http://test.test',
+  image: 'https://picsum.photos/200',
   reservation_spots: 15,
   price_range: 3
 )
