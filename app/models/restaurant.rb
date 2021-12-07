@@ -4,9 +4,10 @@ class Restaurant < ApplicationRecord
   has_and_belongs_to_many :categories, -> { select(:id, :name) }
 
   validates :name, presence: true
-  validates :price_range, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 5 }
-  validates :reservation_spots, numericality: { greater_than_or_equal_to: 1 }
+  validates :price_range, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 5 }, presence: true
+  validates :reservation_spots, numericality: { greater_than_or_equal_to: 1 }, presence: true
   validates :image, presence: true, url: true
+  validates :description, presence: true
 
   def self.json_list
     order(name: :asc)
