@@ -1,6 +1,8 @@
-class V1::RestaurantsController < ApplicationController
+class V1::RestaurantsController < ApplicationController  
   def index
-    @restaurants = Restaurant.json_list
+    @restaurants = Restaurant.page(page)
+    @restaurants.json_list
+    set_pagination_headers(@restaurants)
     render json: @restaurants
   end
 
