@@ -1,4 +1,9 @@
 class V1::ReservationsController < ApplicationController
+  def index
+    @reservations = Reservation.where(user_id: @current_user.id)
+    render json: @reservations
+  end
+
   def create
     @reservation = Reservation.new(reservation_params)
     @reservation.user_id = @current_user.id
