@@ -8,5 +8,6 @@ Rails.application.routes.draw do
     resources :restaurants
     resources :shifts
     resources :categories
+    resources :reservations
   end
 end
