@@ -11,6 +11,7 @@ gem 'jwt'
 gem 'simple_command'
 # Rack cors
 gem 'rack-cors'
+# RSwag
 # Kaminari
 gem 'kaminari'
 
