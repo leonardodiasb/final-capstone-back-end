@@ -16,7 +16,7 @@ Ruby on Rails API for reservations.
 
 ### API Endpoint
 
-- [GET] `slowppi-services.herokuapp.com/`
+- API Endpoint: `slowppi-services.herokuapp.com/v1/`
 
 ### Frontend
 
