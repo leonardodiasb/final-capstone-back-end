@@ -21,9 +21,9 @@ RSpec.describe Restaurant, type: :model do
     expect(restaurant).to_not be_valid
   end
 
-  it 'is valid when description is nil' do
+  it 'is not valid when description is nil' do
     restaurant.description = nil
-    expect(restaurant).to be_valid
+    expect(restaurant).to_not be_valid
   end
 
   it 'is not valid when required attributes are nil' do

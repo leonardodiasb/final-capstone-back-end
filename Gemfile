@@ -13,6 +13,8 @@ gem 'simple_command'
 gem 'rack-cors'
 # RSwag
 gem 'rswag'
+# Kaminari
+gem 'kaminari'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
