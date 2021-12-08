@@ -23,7 +23,7 @@ class Restaurant < ApplicationRecord
     else
       reservations_per_shift = {}
       date_reservations.each do |res|
-        if reservations_per_shift.has_key?(res.shift)
+        if reservations_per_shift.key?(res.shift)
           reservations_per_shift[res.shift] += 1
         else
           reservations_per_shift[res.shift] = 1
