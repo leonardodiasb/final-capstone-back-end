@@ -28,7 +28,7 @@ class Restaurant < ApplicationRecord
       spots_avail_date[sh] = reservation_spots - reservations_per_shift[sh.name]
     end
 
-    p spots_avail_date
+    spots_avail_date
   end
 
   def self.json_list
