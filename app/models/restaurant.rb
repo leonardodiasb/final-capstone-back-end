@@ -26,7 +26,7 @@ class Restaurant < ApplicationRecord
 
     spots_avail_date = {}
     shifts.each do |sh|
-      spots_avail_date[sh] = reservation_spots - reservations_per_shift[sh.name]
+      spots_avail_date[sh.name] = reservation_spots - reservations_per_shift[sh.name]
     end
 
     spots_avail_date
