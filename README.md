@@ -1,4 +1,6 @@
-# final-capstone-back-end
+# Slowppi Backend
+
+API: `https://slowppi-services.herokuapp.com/`
 
 ### ERD Diagram
 
