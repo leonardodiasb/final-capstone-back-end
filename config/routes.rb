@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     post 'register', to: 'registration#create'
     get 'users', to: 'users#index'
     resources :restaurants do
-      get 'availability', to: 'restaurants#availability'
+      get 'availability/:date', to: 'restaurants#availability'
     end
     resources :shifts
     resources :categories
