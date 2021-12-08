@@ -12,6 +12,8 @@ gem 'simple_command'
 # Rack cors
 gem 'rack-cors'
 # RSwag
+gem 'rswag-api'
+gem 'rswag-ui'
 # Kaminari
 gem 'kaminari'
 
@@ -43,6 +45,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'rails-controller-testing'
   gem 'rspec-rails', '~> 5.0.0'
+  gem 'rswag-specs'
 end
 
 group :development do
