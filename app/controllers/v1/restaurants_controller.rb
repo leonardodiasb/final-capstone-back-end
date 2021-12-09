@@ -1,6 +1,4 @@
 class V1::RestaurantsController < ApplicationController
-  skip_before_action :authenticate_request
-  
   def index
     @restaurants = Restaurant.page(page)
     pagination_headers(@restaurants)
