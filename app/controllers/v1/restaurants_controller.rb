@@ -1,9 +1,10 @@
 class V1::RestaurantsController < ApplicationController
+  skip_before_action :authenticate_request
+  
   def index
     @restaurants = Restaurant.page(page)
-    @restaurants.json_list
     pagination_headers(@restaurants)
-    render json: @restaurants
+    render json: @restaurants.json_list
   end
 
   def create
