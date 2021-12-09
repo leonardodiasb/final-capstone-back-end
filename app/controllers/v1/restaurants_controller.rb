@@ -41,6 +41,11 @@ class V1::RestaurantsController < ApplicationController
     render json: { status: 'SUCCESS', message: 'Restaurant Deleted', data: @restaurant }, status: :ok
   end
 
+  def availability
+    @restaurant = Restaurant.find(params[:restaurant_id])
+    render json: { status: 'SUCCESS', body: @restaurant.spots(params[:date]) }, status: :ok
+  end
+
   private
 
   def restaurant_params

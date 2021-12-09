@@ -9,6 +9,35 @@ class Restaurant < ApplicationRecord
   validates :image, presence: true, url: true
   validates :description, presence: true
 
+  def spots(date)
+    date_reservations = []
+    reservations.each do |res|
+      date_reservations.push(res) unless res.date != DateTime.parse(date)
+    end
+
+    spots_avail_date = {}
+    if date_reservations.empty?
+      shifts.each do |sh|
+        spots_avail_date[sh.name] = reservation_spots
+      end
+    else
+      reservations_per_shift = {}
+      date_reservations.each do |res|
+        if reservations_per_shift.key?(res.shift)
+          reservations_per_shift[res.shift] += 1
+        else
+          reservations_per_shift[res.shift] = 1
+        end
+      end
+
+      shifts.each do |sh|
+        spots_avail_date[sh.name] = reservation_spots - reservations_per_shift[sh.name]
+      end
+    end
+
+    spots_avail_date
+  end
+
   def self.json_list
     order(name: :asc)
       .includes(:shifts, :categories)
