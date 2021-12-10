@@ -13,6 +13,10 @@ class ApplicationController < ActionController::API
     @page ||= params[:page] || 1
   end
 
+  def per_page
+    @per_page ||= params[:per_page] || 3
+  end
+
   def pagination_headers(pag)
     headers['X-Total-Count'] = pag.total_count
 

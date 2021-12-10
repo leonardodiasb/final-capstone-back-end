@@ -54,4 +54,14 @@ class Restaurant < ApplicationRecord
       }
     end
   end
+
+  def self.json_delete_list
+    order(name: :asc)
+      .map do |restaurant|
+      {
+        id: restaurant.id,
+        name: restaurant.name
+      }
+    end
+  end
 end

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     post 'authenticate', to: 'authentication#authenticate'
     post 'register', to: 'registration#create'
     get 'users', to: 'users#index'
+    get 'eliminate', to: 'restaurants#eliminate'
     resources :restaurants do
       get 'availability/:date', to: 'restaurants#availability'
     end
