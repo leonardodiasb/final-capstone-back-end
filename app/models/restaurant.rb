@@ -54,4 +54,9 @@ class Restaurant < ApplicationRecord
       }
     end
   end
+
+  def as_json(_options = {})
+    super(only: %i[id name description image reservation_spots price_range created_at
+                   updated_at], include: %i[shifts categories])
+  end
 end

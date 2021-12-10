@@ -5,6 +5,11 @@ class V1::RestaurantsController < ApplicationController
     render json: @restaurants.json_list
   end
 
+  def show
+    @restaurant = Restaurant.find(params[:id])
+    render json: { status: :ok, data: @restaurant }
+  end
+
   def create
     @current_user = AuthorizeApiRequest.call(request.headers).result
     if @current_user.role == 'admin'
