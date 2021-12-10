@@ -5,15 +5,14 @@ class V1::RestaurantsController < ApplicationController
     render json: @restaurants.json_list
   end
 
-
   def eliminate
     @restaurants = Restaurant
     render json: @restaurants.json_delete_list
+  end
 
   def show
     @restaurant = Restaurant.find(params[:id])
     render json: { status: :ok, data: @restaurant }
-
   end
 
   def create
