@@ -55,6 +55,16 @@ class Restaurant < ApplicationRecord
     end
   end
 
+  def self.json_delete_list
+    order(name: :asc)
+      .map do |restaurant|
+      {
+        id: restaurant.id,
+        name: restaurant.name
+      }
+    end
+  end
+
   def as_json(_options = {})
     super(only: %i[id name description image reservation_spots price_range created_at
                    updated_at], include: %i[shifts categories])

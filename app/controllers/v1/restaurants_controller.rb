@@ -1,8 +1,13 @@
 class V1::RestaurantsController < ApplicationController
   def index
-    @restaurants = Restaurant.page(page)
+    @restaurants = Restaurant.page(page).per(per_page)
     pagination_headers(@restaurants)
     render json: @restaurants.json_list
+  end
+
+  def eliminate
+    @restaurants = Restaurant
+    render json: @restaurants.json_delete_list
   end
 
   def show
