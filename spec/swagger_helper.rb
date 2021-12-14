@@ -20,20 +20,20 @@ RSpec.configure do |config|
         version: 'v1'
       },
       paths: {},
-      securityDefinitions: {
-        Bearer: {
-          description: 'token for API auth',
-          type: :apiKey,
-          name: 'Authorization',
-          in: :header
-        }
-      },
+      # securityDefinitions: {
+      #   Bearer: {
+      #     description: '',
+      #     type: :apiKey,
+      #     name: 'Authorization',
+      #     in: :header
+      #   }
+      # },
       servers: [
         {
           url: 'https://{defaultHost}',
           variables: {
             defaultHost: {
-              default: 'www.example.com'
+              default: 'slowppi-services.herokuapp.com/'
             }
           }
         }
