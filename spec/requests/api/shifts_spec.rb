@@ -8,7 +8,7 @@ RSpec.describe 'api/shifts', type: :request do
     get 'Retrieves a list of Shifts' do
       tags 'Shifts'
       produces 'application/json'
-      # security [Bearer: []]
+      security [bearerAuth: []]
 
       response '200', 'Shifts found' do
         schema type: :array,
@@ -26,8 +26,7 @@ RSpec.describe 'api/shifts', type: :request do
     post "Create a new Shift (if user is 'admin')" do
       tags 'Shifts'
       consumes 'application/json'
-      # security [Bearer: []]
-      # parameter name: :auth_token, :in => :header, :type => :string
+      security [bearerAuth: []]
       parameter name: :shift, in: :body, schema: {
         type: :object,
         properties: {
@@ -53,7 +52,7 @@ RSpec.describe 'api/shifts', type: :request do
     delete "Delete a Shift (if user is 'admin')" do
       tags 'Shifts'
       produces 'application/json'
-      # security [Bearer: []]
+      security [bearerAuth: []]
       parameter name: :id, in: :path, type: :integer
 
       response '200', 'Shift Deleted' do

@@ -33,6 +33,8 @@ paths:
       summary: Retrieves a list of Categories
       tags:
       - Categories
+      security:
+      - bearerAuth: []
       responses:
         '200':
           description: Categories found
@@ -51,6 +53,8 @@ paths:
       summary: Create a new Category (if user is 'admin')
       tags:
       - Categories
+      security:
+      - bearerAuth: []
       parameters: []
       responses:
         '200':
@@ -72,6 +76,8 @@ paths:
       summary: Delete a Category (if user is 'admin')
       tags:
       - Categories
+      security:
+      - bearerAuth: []
       parameters:
       - name: id
         in: path
@@ -128,6 +134,8 @@ paths:
       summary: Create a new Reservation
       tags:
       - Reservations
+      security:
+      - bearerAuth: []
       parameters: []
       responses:
         '200':
@@ -157,6 +165,8 @@ paths:
       summary: Retrieves a list of Reservations
       tags:
       - Reservations
+      security:
+      - bearerAuth: []
       responses:
         '200':
           description: Reservations found
@@ -180,6 +190,8 @@ paths:
       summary: Delete a Reservation
       tags:
       - Reservations
+      security:
+      - bearerAuth: []
       parameters:
       - name: id
         in: path
@@ -207,6 +219,8 @@ paths:
       summary: Create a new Restaurant (if user is 'admin')
       tags:
       - Restaurants
+      security:
+      - bearerAuth: []
       parameters: []
       responses:
         '201':
@@ -249,11 +263,8 @@ paths:
       summary: Retrieves a list of Restaurants
       tags:
       - Restaurants
-      parameters:
-      - name: Authorization
-        in: header
-        schema:
-          type: string
+      security:
+      - bearerAuth: []
       responses:
         '200':
           description: Restaurants found
@@ -299,6 +310,8 @@ paths:
       summary: Delete a Restaurant (if user is 'admin')
       tags:
       - Restaurants
+      security:
+      - bearerAuth: []
       parameters:
       - name: id
         in: path
@@ -347,6 +360,8 @@ paths:
       summary: Retrieve a Restaurant
       tags:
       - Restaurants
+      security:
+      - bearerAuth: []
       parameters:
       - name: id
         in: path
@@ -396,6 +411,8 @@ paths:
       summary: Retrieves a list of Shifts
       tags:
       - Shifts
+      security:
+      - bearerAuth: []
       responses:
         '200':
           description: Shifts found
@@ -414,6 +431,8 @@ paths:
       summary: Create a new Shift (if user is 'admin')
       tags:
       - Shifts
+      security:
+      - bearerAuth: []
       parameters: []
       responses:
         '200':
@@ -435,6 +454,8 @@ paths:
       summary: Delete a Shift (if user is 'admin')
       tags:
       - Shifts
+      security:
+      - bearerAuth: []
       parameters:
       - name: id
         in: path
@@ -453,6 +474,12 @@ paths:
                     type: integer
                   name:
                     type: string
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
 servers:
 - url: https://{defaultHost}
   variables:

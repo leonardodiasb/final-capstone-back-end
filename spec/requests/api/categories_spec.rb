@@ -8,7 +8,7 @@ RSpec.describe 'api/categories', type: :request do
     get 'Retrieves a list of Categories' do
       tags 'Categories'
       produces 'application/json'
-      # security [Bearer: []]
+      security [bearerAuth: []]
 
       response '200', 'Categories found' do
         schema type: :array,
@@ -26,8 +26,7 @@ RSpec.describe 'api/categories', type: :request do
     post "Create a new Category (if user is 'admin')" do
       tags 'Categories'
       consumes 'application/json'
-      # security [Bearer: []]
-      # parameter name: :auth_token, :in => :header, :type => :string
+      security [bearerAuth: []]
       parameter name: :category, in: :body, schema: {
         type: :object,
         properties: {
@@ -53,7 +52,7 @@ RSpec.describe 'api/categories', type: :request do
     delete "Delete a Category (if user is 'admin')" do
       tags 'Categories'
       produces 'application/json'
-      # security [Bearer: []]
+      security [bearerAuth: []]
       parameter name: :id, in: :path, type: :integer
 
       response '200', 'Category Deleted' do

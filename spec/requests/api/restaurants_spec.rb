@@ -7,8 +7,7 @@ RSpec.describe 'api/restaurants', type: :request do
     post "Create a new Restaurant (if user is 'admin')" do
       tags 'Restaurants'
       consumes 'application/json'
-      # security [Bearer: []]
-      # parameter name: :Authorization, :in => :header, :type => :string
+      security [bearerAuth: []]
       parameter name: :restaurant, in: :body, schema: {
         type: :object,
         properties: {
@@ -43,8 +42,7 @@ RSpec.describe 'api/restaurants', type: :request do
     get 'Retrieves a list of Restaurants' do
       tags 'Restaurants'
       produces 'application/json'
-      # security [Bearer: []]
-      parameter name: :Authorization, in: :header, type: :string
+      security [bearerAuth: []]
 
       response '200', 'Restaurants found' do
         before { create(:restaurant) }
@@ -88,39 +86,39 @@ RSpec.describe 'api/restaurants', type: :request do
     delete "Delete a Restaurant (if user is 'admin')" do
       tags 'Restaurants'
       produces 'application/json'
-      # security [Bearer: []]
+      security [bearerAuth: []]
       parameter name: :id, in: :path, type: :integer
 
       response '200', 'Restaurant Deleted' do
         let(:id) { create(:restaurant).id }
-        # schema type: :object,
-        #       properties: {
-        #         id: { type: :integer },
-        #         name: { type: :string },
-        #         description: { type: :string },
-        #         reservation_spots: { type: :integer },
-        #         image: { type: :string },
-        #         price_range: { type: :integer },
-        #         shifts: {
-        #           type: :array,
-        #           items: {
-        #             type: :object,
-        #             properties: {
-        #               id: { type: :integer },
-        #               name: { type: :string }
-        #             }
-        #           }
-        #         },
-        #         categories: {
-        #           type: :array,items: {
-        #             type: :object,
-        #             properties: {
-        #               id: { type: :integer },
-        #               name: { type: :string }
-        #             }
-        #           }
-        #         }
-        #       }
+        schema type: :object,
+              properties: {
+                id: { type: :integer },
+                name: { type: :string },
+                description: { type: :string },
+                reservation_spots: { type: :integer },
+                image: { type: :string },
+                price_range: { type: :integer },
+                shifts: {
+                  type: :array,
+                  items: {
+                    type: :object,
+                    properties: {
+                      id: { type: :integer },
+                      name: { type: :string }
+                    }
+                  }
+                },
+                categories: {
+                  type: :array,items: {
+                    type: :object,
+                    properties: {
+                      id: { type: :integer },
+                      name: { type: :string }
+                    }
+                  }
+                }
+              }
         run_test!
       end
     end
@@ -128,7 +126,7 @@ RSpec.describe 'api/restaurants', type: :request do
     get 'Retrieve a Restaurant' do
       tags 'Restaurants'
       produces 'application/json'
-      # security [Bearer: []]
+      security [bearerAuth: []]
       parameter name: :id, in: :path, type: :integer
 
       response '200', 'Restaurant Found' do

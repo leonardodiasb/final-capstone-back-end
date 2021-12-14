@@ -8,8 +8,7 @@ RSpec.describe 'api/reservations', type: :request do
     post 'Create a new Reservation' do
       tags 'Reservations'
       consumes 'application/json'
-      # security [Bearer: []]
-      # parameter name: :auth_token, :in => :header, :type => :string
+      security [bearerAuth: []]
       parameter name: :reservation, in: :body, schema: {
         type: :object,
         properties: {
@@ -38,7 +37,7 @@ RSpec.describe 'api/reservations', type: :request do
     get 'Retrieves a list of Reservations' do
       tags 'Reservations'
       produces 'application/json'
-      # security [Bearer: []]
+      security [bearerAuth: []]
 
       response '200', 'Reservations found' do
         let(:reservation) do
@@ -58,7 +57,7 @@ RSpec.describe 'api/reservations', type: :request do
     delete 'Delete a Reservation' do
       tags 'Reservations'
       produces 'application/json'
-      # security [Bearer: []]
+      security [bearerAuth: []]
       parameter name: :id, in: :path, type: :integer
 
       response '200', 'Reservation Deleted' do
