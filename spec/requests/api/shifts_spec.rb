@@ -12,13 +12,13 @@ RSpec.describe 'api/shifts', type: :request do
 
       response '200', 'Shifts found' do
         schema type: :array,
-              items: {
-                type: :object,
-                properties: {
-                  id: { type: :integer },
-                  name: { type: :string }
-                }
-              }
+               items: {
+                 type: :object,
+                 properties: {
+                   id: { type: :integer },
+                   name: { type: :string }
+                 }
+               }
         run_test!
       end
     end
@@ -54,15 +54,15 @@ RSpec.describe 'api/shifts', type: :request do
       tags 'Shifts'
       produces 'application/json'
       # security [Bearer: []]
-      parameter name: :id, :in => :path, :type => :integer
+      parameter name: :id, in: :path, type: :integer
 
       response '200', 'Shift Deleted' do
         let(:id) { create(:shift).id }
         schema type: :object,
-              properties: {
-                id: { type: :integer },
-                name: { type: :string }
-              }
+               properties: {
+                 id: { type: :integer },
+                 name: { type: :string }
+               }
         run_test!
       end
     end

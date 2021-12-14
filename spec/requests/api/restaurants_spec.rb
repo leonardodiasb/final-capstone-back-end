@@ -20,7 +20,7 @@ RSpec.describe 'api/restaurants', type: :request do
           shifts: { type: :array, items: { type: :integer } },
           categories: { type: :array, items: { type: :integer } }
         },
-        required: ['name', 'description', 'reservation_spots', 'image', 'price_range', 'shifts', 'categories']
+        required: %w[name description reservation_spots image price_range shifts categories]
       }
       response '201', 'Restaurant created' do
         let(:shift) { create(:shift) }
@@ -44,41 +44,41 @@ RSpec.describe 'api/restaurants', type: :request do
       tags 'Restaurants'
       produces 'application/json'
       # security [Bearer: []]
-      parameter name: :Authorization, :in => :header, :type => :string
+      parameter name: :Authorization, in: :header, type: :string
 
       response '200', 'Restaurants found' do
         before { create(:restaurant) }
         schema type: :array,
-              items: {
-                type: :object,
-                properties: {
-                  id: { type: :integer },
-                  name: { type: :string },
-                  description: { type: :string },
-                  reservation_spots: { type: :integer },
-                  image: { type: :string },
-                  price_range: { type: :integer },
-                  shifts: { 
-                    type: :array,
-                    items: { 
-                      type: :object,
-                      properties: {
-                        id: { type: :integer },
-                        name: { type: :string }
-                      }
-                    }
-                  },
-                  categories: { 
-                    type: :array,items: { 
-                      type: :object,
-                      properties: {
-                        id: { type: :integer },
-                        name: { type: :string }
-                      }
-                    }
-                  }
-                }
-              }
+               items: {
+                 type: :object,
+                 properties: {
+                   id: { type: :integer },
+                   name: { type: :string },
+                   description: { type: :string },
+                   reservation_spots: { type: :integer },
+                   image: { type: :string },
+                   price_range: { type: :integer },
+                   shifts: {
+                     type: :array,
+                     items: {
+                       type: :object,
+                       properties: {
+                         id: { type: :integer },
+                         name: { type: :string }
+                       }
+                     }
+                   },
+                   categories: {
+                     type: :array, items: {
+                       type: :object,
+                       properties: {
+                         id: { type: :integer },
+                         name: { type: :string }
+                       }
+                     }
+                   }
+                 }
+               }
         run_test!
       end
     end
@@ -89,7 +89,7 @@ RSpec.describe 'api/restaurants', type: :request do
       tags 'Restaurants'
       produces 'application/json'
       # security [Bearer: []]
-      parameter name: :id, :in => :path, :type => :integer
+      parameter name: :id, in: :path, type: :integer
 
       response '200', 'Restaurant Deleted' do
         let(:id) { create(:restaurant).id }
@@ -101,9 +101,9 @@ RSpec.describe 'api/restaurants', type: :request do
         #         reservation_spots: { type: :integer },
         #         image: { type: :string },
         #         price_range: { type: :integer },
-        #         shifts: { 
+        #         shifts: {
         #           type: :array,
-        #           items: { 
+        #           items: {
         #             type: :object,
         #             properties: {
         #               id: { type: :integer },
@@ -111,8 +111,8 @@ RSpec.describe 'api/restaurants', type: :request do
         #             }
         #           }
         #         },
-        #         categories: { 
-        #           type: :array,items: { 
+        #         categories: {
+        #           type: :array,items: {
         #             type: :object,
         #             properties: {
         #               id: { type: :integer },
@@ -129,38 +129,38 @@ RSpec.describe 'api/restaurants', type: :request do
       tags 'Restaurants'
       produces 'application/json'
       # security [Bearer: []]
-      parameter name: :id, :in => :path, :type => :integer
+      parameter name: :id, in: :path, type: :integer
 
       response '200', 'Restaurant Found' do
         let(:id) { create(:restaurant).id }
         schema type: :object,
-                properties: {
-                  id: { type: :integer },
-                  name: { type: :string },
-                  description: { type: :string },
-                  reservation_spots: { type: :integer },
-                  image: { type: :string },
-                  price_range: { type: :integer },
-                  shifts: { 
-                    type: :array,
-                    items: { 
-                      type: :object,
-                      properties: {
-                        id: { type: :integer },
-                        name: { type: :string }
-                      }
-                    }
-                  },
-                  categories: { 
-                    type: :array,items: { 
-                      type: :object,
-                      properties: {
-                        id: { type: :integer },
-                        name: { type: :string }
-                      }
-                    }
-                  }
-                }
+               properties: {
+                 id: { type: :integer },
+                 name: { type: :string },
+                 description: { type: :string },
+                 reservation_spots: { type: :integer },
+                 image: { type: :string },
+                 price_range: { type: :integer },
+                 shifts: {
+                   type: :array,
+                   items: {
+                     type: :object,
+                     properties: {
+                       id: { type: :integer },
+                       name: { type: :string }
+                     }
+                   }
+                 },
+                 categories: {
+                   type: :array, items: {
+                     type: :object,
+                     properties: {
+                       id: { type: :integer },
+                       name: { type: :string }
+                     }
+                   }
+                 }
+               }
         run_test!
       end
     end

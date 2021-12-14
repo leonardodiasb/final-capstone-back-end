@@ -12,18 +12,18 @@ RSpec.describe 'api/authentication', type: :request do
           email: { type: :string },
           password: { type: :string }
         },
-        required: ['email', 'password']
+        required: %w[email password]
       }
 
       response '200', 'User authenticated' do
-        let(:user) do 
+        let(:user) do
           { email: user1.email, password: user1.password }
         end
         run_test!
       end
 
       response '401', 'unauthorized' do
-        let(:user) do 
+        let(:user) do
           { email: 'user@user.com', password: 'password' }
         end
         run_test!
