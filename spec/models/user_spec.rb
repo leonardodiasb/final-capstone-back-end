@@ -31,8 +31,4 @@ RSpec.describe User, type: :model do
     user.email = nil
     expect(user).to_not be_valid
   end
-
-  it 'is has default role' do
-    expect(user.role).to eql('')
-  end
 end
