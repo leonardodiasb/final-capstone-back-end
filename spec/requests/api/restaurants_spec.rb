@@ -92,33 +92,33 @@ RSpec.describe 'api/restaurants', type: :request do
       response '200', 'Restaurant Deleted' do
         let(:id) { create(:restaurant).id }
         schema type: :object,
-              properties: {
-                id: { type: :integer },
-                name: { type: :string },
-                description: { type: :string },
-                reservation_spots: { type: :integer },
-                image: { type: :string },
-                price_range: { type: :integer },
-                shifts: {
-                  type: :array,
-                  items: {
-                    type: :object,
-                    properties: {
-                      id: { type: :integer },
-                      name: { type: :string }
-                    }
-                  }
-                },
-                categories: {
-                  type: :array,items: {
-                    type: :object,
-                    properties: {
-                      id: { type: :integer },
-                      name: { type: :string }
-                    }
-                  }
-                }
-              }
+               properties: {
+                 id: { type: :integer },
+                 name: { type: :string },
+                 description: { type: :string },
+                 reservation_spots: { type: :integer },
+                 image: { type: :string },
+                 price_range: { type: :integer },
+                 shifts: {
+                   type: :array,
+                   items: {
+                     type: :object,
+                     properties: {
+                       id: { type: :integer },
+                       name: { type: :string }
+                     }
+                   }
+                 },
+                 categories: {
+                   type: :array, items: {
+                     type: :object,
+                     properties: {
+                       id: { type: :integer },
+                       name: { type: :string }
+                     }
+                   }
+                 }
+               }
         run_test!
       end
     end
