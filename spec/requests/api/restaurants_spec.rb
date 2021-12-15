@@ -100,24 +100,24 @@ RSpec.describe 'api/restaurants', type: :request do
                  image: { type: :string },
                  price_range: { type: :integer },
                  shifts: {
-                   type: :array,
-                   items: {
-                     type: :object,
-                     properties: {
-                       id: { type: :integer },
-                       name: { type: :string }
-                     }
-                   }
-                 },
+                  type: :array,
+                  items: {
+                    type: :object,
+                    properties: {
+                      id: { type: :integer },
+                      name: { type: :string }
+                    }
+                  }
+                },
                  categories: {
-                   type: :array, items: {
-                     type: :object,
-                     properties: {
-                       id: { type: :integer },
-                       name: { type: :string }
-                     }
-                   }
-                 }
+                  type: :array, items: {
+                    type: :object,
+                    properties: {
+                      id: { type: :integer },
+                      name: { type: :string }
+                    }
+                  }
+                }
                }
         run_test!
       end
@@ -159,6 +159,52 @@ RSpec.describe 'api/restaurants', type: :request do
                    }
                  }
                }
+        run_test!
+      end
+    end
+  end
+
+  path '/v1/eliminate/' do
+    get 'Retrieve a list of all Restaurants' do
+      tags 'Restaurants'
+      produces 'application/json'
+      security [bearerAuth: []]
+
+      response '200', 'Restaurant Found' do
+        schema type: :array,
+                items: { 
+                  type: :object,
+                  properties: {
+                    id: { type: :integer },
+                    name: { type: :string }
+                  }
+                }
+        run_test!
+      end
+    end
+  end
+
+  path '/v1/restaurants/{restaurant_id}/availability/{date}' do
+    get 'Retrieve a list of all Restaurants' do
+      tags 'Restaurants'
+      produces 'application/json'
+      security [bearerAuth: []]
+      parameter name: :restaurant_id, in: :path, type: :integer
+      parameter name: :date, in: :path, type: :string
+
+      response '200', 'Restaurant Found' do
+        schema type: :object,
+                properties: {
+                  status: { type: :integer },
+                  body: { 
+                    type: :object,
+                    properties: {
+                      Breakfast: { type: :integer },
+                      Lunch: { type: :integer },
+                      Dinner: { type: :integer }
+                    }
+                  }
+                }
         run_test!
       end
     end

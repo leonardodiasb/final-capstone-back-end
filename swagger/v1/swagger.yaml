@@ -406,6 +406,64 @@ paths:
                           type: integer
                         name:
                           type: string
+  "/v1/eliminate/":
+    get:
+      summary: Retrieve a list of all Restaurants
+      tags:
+      - Restaurants
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Restaurant Found
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+  "/v1/restaurants/{restaurant_id}/availability/{date}":
+    get:
+      summary: Retrieve a list of all Restaurants
+      tags:
+      - Restaurants
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: restaurant_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: date
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Restaurant Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                  body:
+                    type: object
+                    properties:
+                      Breakfast:
+                        type: integer
+                      Lunch:
+                        type: integer
+                      Dinner:
+                        type: integer
   "/v1/shifts":
     get:
       summary: Retrieves a list of Shifts
