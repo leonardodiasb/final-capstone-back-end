@@ -6,10 +6,14 @@ class V1::ReservationsController < ApplicationController
 
   def create
     @reservation = Reservation.new(reservation_params)
+    @restaurant = Restaurant.find(reservation_params[:restaurant_id])
     @reservation.user_id = @current_user.id
-    return render json: @reservation.errors, status: :unprocessable_entity unless @reservation.save
-
-    render json: { status: :created, message: 'Reservation created successfully.', body: @reservation }, status: :ok
+    if @reservation.save
+      @restaurant.reservations << @reservation
+      render json: { status: :created, message: 'Reservation created successfully.', body: @reservation }, status: :ok
+    else
+      render json: @reservation.errors, status: :unprocessable_entity
+    end
   end
 
   def destroy
