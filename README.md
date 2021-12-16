@@ -63,14 +63,11 @@ $ rails c
 - Before
 
 ![](kanban-before-1.png)
+[Screenshot 1](kanban-before-1.png)
 
-![](kanban-before-2.png)
+[Screenshot 2](kanban-before-2.png)
 
-- After
-
-![](kanban-after-1.png)
-
-## Authors
+## Authors (4)
 
 **Abimbola Buari**
 - GitHub: [@bimbolabuari](https://github.com/bimbolabuari)
