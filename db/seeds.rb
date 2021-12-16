@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create(
+user1 = User.create(
   first_name: 'admin',
 	last_name: 'admin',
 	email: 'admin1@user.com',
@@ -56,3 +56,9 @@ restaurant2.shifts << breakfast
 restaurant2.shifts << lunch
 restaurant3.shifts << lunch
 restaurant3.shifts << dinner
+
+reservation1 = Reservation.new(date: '2021-12-15',shift: 'Breakfast')
+
+reservation1.restaurant_id = restaurant2.id
+reservation1.user_id = user1.id
+reservation1.save
