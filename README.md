@@ -10,6 +10,7 @@ Ruby on Rails API for reservations.
   - [Available scripts](#available-scripts)
 - [My process](#my-process)
   - [Built with](#built-with)
+  - [Kanban Board](#kanban-board)
 - [Author](#author)
 
 ## Overview
@@ -54,6 +55,22 @@ $ rails c
 ### Built with
 
 - Ruby on Rails - API
+
+### Kanban Board
+
+- [Kanban Board](https://github.com/leonardodiasb/final-capstone-back-end/projects/1)
+
+- Before
+
+![](kanban-before-1.png)
+
+![](kanban-before-2.png)
+
+- After
+
+![](kanban-after-1.png)
+
+![](kanban-after-2.png)
 
 ## Authors
 
