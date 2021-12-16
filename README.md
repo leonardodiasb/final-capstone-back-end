@@ -70,8 +70,6 @@ $ rails c
 
 ![](kanban-after-1.png)
 
-![](kanban-after-2.png)
-
 ## Authors
 
 **Abimbola Buari**
